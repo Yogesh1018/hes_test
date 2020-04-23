@@ -1,7 +1,8 @@
 import React from 'react'
 import Row from './row'
+import Header from './header'
 
-const Hex = ({rows, bytesper}) => {
+const Hex = ({rows, bytesper, rowLength}) => {
   const pad = "000000";
 
   const rowComponent = rows.map(function(row, i) {
@@ -12,6 +13,17 @@ const Hex = ({rows, bytesper}) => {
 
   return(
     <div className="hexviewer">
+      { rows.length > 0 && 
+        <diV class="header">
+          <span class="hex">
+            <Header rowLength={rowLength}/>
+          </span>
+          <span class="ascii">
+            <Header rowLength={rowLength}/>
+          </span>
+        </diV>
+      }
+
       <div className="hex">
         {rowComponent}
       </div>

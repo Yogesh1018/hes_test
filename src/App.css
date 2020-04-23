@@ -61,8 +61,16 @@
   visibility: hidden;
 }
 
+.hexviewer span.setHex{
+  background-color:#c4c4ff;
+}
+
+.hexviewer span.setAscii{
+  background-color: #eee;
+}
+
 .hexviewer span.setAscii,
-.hexviewer span.setHex {
+.hexviewer span.setHex{
   float: left;
   margin: 0;
   padding: 0;
@@ -73,7 +81,7 @@
 }
 
 .hexviewer span.setAscii span,
-.hexviewer span.setHex span {
+.hexviewer span.setHex span{
   margin: 0;
   padding: 0;
   display: inline-block;
@@ -91,4 +99,29 @@
   font-weight: bold;
   color: white;
   background: #0076e0;
+}
+.hexviewer .header{
+  padding-bottom: 10px;
+  font-weight: bold;
+  background-color: #eee;
+}
+
+.hexviewer .header .hex {
+  margin-left: 70px;
+}
+
+.hexviewer .header .hex span{
+  font-family: monospace;
+  text-align: center;
+  margin-right: 12px;
+  margin-left: 12px;
+  width: 1.5em;
+}
+
+.hexviewer .header .ascii span{
+  font-family: monospace;
+  text-align: center;
+  margin-right: 8px;
+  margin-left: 5px;
+  width: 1.5em;
 }

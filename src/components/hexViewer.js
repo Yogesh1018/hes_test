@@ -41,7 +41,7 @@ const HexViewer = ({rowLength, buffer}) => {
     rows.push(row);
   }
   return (
-    <Hex rows={rows} bytesper={rowChunk} />
+    <Hex rows={rows} bytesper={rowChunk} rowLength={rowLength}/>
   );
 }
 

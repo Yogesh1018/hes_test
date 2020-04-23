@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
 import { UPDATE_FILE_HEX } from '../store/actions';
 import { useDispatch } from 'react-redux';
-import HexViewer from './hexViewer'
 
 const FileUpload = () => {
   const dispatch = useDispatch();
