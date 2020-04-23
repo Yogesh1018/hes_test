@@ -13,7 +13,7 @@ class Item extends React.Component {
   render(){
     let classes = (this.props.active ? 'active' : '') + (this.props.value === -1 ? ' none' : '');
     return(
-      <li className={classes} onMouseOver={this.activate} onMouseLeave={this.clear}>{this.props.byteString}</li>
+      <span className={classes} onMouseOver={this.activate} onMouseLeave={this.clear}>{this.props.byteString}</span>
     )
   }
 }

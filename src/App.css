@@ -9,7 +9,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 20s spannear;
   }
 }
 
@@ -46,7 +46,7 @@
    color: #555;
 }
 
-.hexviewer div.heading {
+.hexviewer span.heading {
    font-family: monospace;
    width: 4.5em;
    float: left;
@@ -54,14 +54,14 @@
 
 .hexviewer div.row {
    height: 25px;
-   line-height: 25px;
+   spanne-height: 25px;
 }
 
 .hexviewer .none {
    visibility: hidden;
 }
 
-.hexviewer ul.setAscii, .hexviewer ul.setHex {
+.hexviewer span.setAscii, .hexviewer span.setHex {
    float:left;
    margin:0;padding:0;
    font-family: monospace;
@@ -70,19 +70,19 @@
    margin-left: 5px;
 }
 
-.hexviewer ul.setAscii li, .hexviewer ul.setHex li {
+.hexviewer span.setAscii span, .hexviewer span.setHex span {
    margin:0;padding:0;
    display: inline-block;
    width: 1.5em;
 }
 
-.hexviewer ul.setAscii.active,
-.hexviewer ul.setHex.active {
+.hexviewer span.setAscii.active,
+.hexviewer span.setHex.active {
    color: green;
 }
 
-.hexviewer ul.setAscii li.active,
-.hexviewer ul.setHex li.active {
+.hexviewer span.setAscii span.active,
+.hexviewer span.setHex span.active {
    font-weight:bold;
    color: white;
    background-color: green;

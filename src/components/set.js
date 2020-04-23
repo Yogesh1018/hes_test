@@ -27,9 +27,9 @@ class Set extends React.Component {
     }.bind(this));
     
     return(
-      <ul className={"setHex" + (this.props.active ? ' active' : '')} onMouseOver={this.activate} onMouseLeave={this.clear}>
+      <span className={"setHex" + (this.props.active ? ' active' : '')} onMouseOver={this.activate} onMouseOut={this.clear}>
 				{items}
-			</ul>
+			</span>
     )
   }
 }

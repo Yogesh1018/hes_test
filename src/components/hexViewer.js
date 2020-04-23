@@ -1,46 +1,49 @@
 import React from 'react'
 import Hex from './hex'
 
-class HexViewer extends React.Component{
-  render(){
-    const rowChunk = this.props.rowLength, setChunk = this.props.setLength;
-    let rows = [], row = [], set = [], sets = [];
-      
-    let buffer = [];
-    const bytes = this.props.buffer.length;
 
-    if(Buffer.isBuffer(this.props.buffer)) {
+const HexViewer = ({rowLength, setLength, buffer}) => {
+  const rowChunk = rowLength, setChunk = setLength;
+  let rows = [], row = [], set = [], sets = [];
+    
+  const bytes = buffer.length || buffer.byteLength;
+
+  let bufferData = []
+
+  
+    if(bytes > 0){
+      const view1 = new DataView(buffer)
       for (let i = 0; i < bytes; i++) {
-        buffer.push(this.props.buffer[i]);
+        bufferData.push(view1.getInt8(i));
       }
-    } else {
-      buffer = this.props.buffer;
     }
 
-    for (let i = 0; i<bytes; i+=rowChunk) {
-      sets = [];
-      const temparray = buffer.slice(i,i+rowChunk);
+  for (let i = 0; i<bytes; i+=rowChunk) {
+    sets = [];
+    const temparray = bufferData.slice(i,i+rowChunk);
 
-      for(let z = temparray.length; z < rowChunk; z++) {
-        temparray.push(-1);
-      }
-      row = [];
-      for (let x=0,k=temparray.length; x<k; x+=setChunk) {
-        let set = temparray.slice(x,x+setChunk);
-
-        for(let z = set.length; z < setChunk; z++) {
-          set.push(-1);
-        }
-        row.push(set);
-
-      }
-      rows.push(row);
+    for(let z = temparray.length; z < rowChunk; z++) {
+      temparray.push(-1);
     }
+    row = [];
+    
+    let temparrayLength = temparray.length || temparray.byteLength
+    for (let x=0,k=temparrayLength; x<k; x+=setChunk) {
+      let set = temparray.slice(x,x+setChunk);
 
-    return (
-      <Hex rows={rows} bytesper={rowChunk} />
-    );
+      let setLength = set.length || set.byteLength
+      for(let z = setLength; z < setChunk; z++) {
+        set.push(-1);
+      }
+      row.push(set);
+
+    }
+    rows.push(row);
   }
+  return (
+    <Hex rows={rows} bytesper={rowChunk} />
+  );
 }
+
 
 export default HexViewer;
