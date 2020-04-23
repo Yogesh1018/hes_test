@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import HexViewer from './components/hexViewer'
+import React from 'react';
+import HexViewer from './components/hexViewer';
+import { useSelector } from 'react-redux'
+
 import './App.css';
 
-let data = []
-for (let i = 0; i < 295; i++) {
-	data.push(parseInt(Math.random() * 255))
-}
-
 function App() {
+  const data = useSelector(state => state.data);
+
   return (
-      <HexViewer  
-      buffer={data} rowLength={16} setLength={4} />
+      <HexViewer
+        buffer={data}
+        rowLength={16}
+      />
   );
 }
 
