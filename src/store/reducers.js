@@ -1,21 +1,20 @@
 
-import { SELECT_HEX } from './actions';
-
-let data = [];
-for (let i = 0; i < 295; i++) {
-	data.push(parseInt(Math.random() * 255))
-}
+import { UPDATE_SELECTED_HEX, UPDATE_FILE_HEX } from './actions';
 
 const initialState = {
-  data,
+  data: [],
   selectedKeys: [],
 };
 
 const hex = (state=initialState, action)  => {
+  console.log({ action });
+
   switch (action.type) {
-    case SELECT_HEX: {
-      console.log({ action });
+    case UPDATE_SELECTED_HEX: {
       return({...state, selectedKeys: action.selectedKeys });
+    }
+    case UPDATE_FILE_HEX: {
+      return({...state, data: action.data });
     }
     default:
       return state;

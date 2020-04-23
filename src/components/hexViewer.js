@@ -7,17 +7,16 @@ const HexViewer = ({rowLength, buffer}) => {
   const rowChunk = rowLength, setChunk = setLength;
   let rows = [], row = [], set = [], sets = [];
 
-  const bytes = buffer.length;
+  const bytes = buffer.length || buffer.byteLength;
 
   let bufferData = []
 
-  if(Buffer.isBuffer(buffer)) {
-    for (let i = 0; i < bytes; i++) {
-      bufferData.push(buffer[i]);
+    if(bytes > 0){
+      const view1 = new DataView(buffer)
+      for (let i = 0; i < bytes; i++) {
+        bufferData.push(view1.getInt8(i));
+      }
     }
-  } else {
-    bufferData = buffer;
-  }
 
   for (let i = 0; i<bytes; i+=rowChunk) {
     sets = [];
@@ -27,10 +26,13 @@ const HexViewer = ({rowLength, buffer}) => {
       temparray.push(-1);
     }
     row = [];
-    for (let x=0,k=temparray.length; x<k; x+=setChunk) {
+
+    let temparrayLength = temparray.length || temparray.byteLength
+    for (let x=0,k=temparrayLength; x<k; x+=setChunk) {
       let set = temparray.slice(x,x+setChunk);
 
-      for(let z = set.length; z < setChunk; z++) {
+      let setLength = set.length || set.byteLength
+      for(let z = setLength; z < setChunk; z++) {
         set.push(-1);
       }
       row.push(set);
@@ -38,7 +40,6 @@ const HexViewer = ({rowLength, buffer}) => {
     }
     rows.push(row);
   }
-
   return (
     <Hex rows={rows} bytesper={rowChunk} />
   );

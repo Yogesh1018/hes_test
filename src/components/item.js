@@ -4,7 +4,6 @@ const Item = ({byteString }) => {
   return(
     <span>{byteString}</span>
   )
-
 }
 
 export default Item;
